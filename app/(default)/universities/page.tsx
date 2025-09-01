@@ -176,7 +176,7 @@ export default function Home() {
                                 <IndexCard title="深圳理工大学" posts={szlgData} total={szlgTotal} university="szlg" />
                                 <IndexCard title="深圳信息职业技术学院" posts={sziitData} total={sziitTotal} university="sziit" />
                                 <IndexCard title="深圳技术大学" posts={sztuData} total={sztuTotal} university="sztu" />
-                                <IndexCard title="深圳综合粒子设施研究院" posts={iasfData} total={iasfTotal} university="iasf" />
+                                <IndexCard title="深圳先进光源研究院" posts={iasfData} total={iasfTotal} university="iasf" />
                                 <IndexCard title="北京大学深圳研究生院" posts={pkuszData} total={pkuszTotal} university="pkusz" />
                                 <IndexCard title="深圳北理莫斯科大学" posts={smbuData} total={smbuTotal} university="smbu" />
                                 <IndexCard title="深圳医学科学院" posts={szyxkxyData} total={szyxkxyTotal} university="szyxkxy" />
