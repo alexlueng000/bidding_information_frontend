@@ -45,7 +45,7 @@ type UniversityChinese = {
 type UniversityKey = keyof typeof universityChinese;
 
 const universityChinese: UniversityChinese = {
-  iasf: "深圳综合粒子设施研究院",
+  iasf: "深圳先进光源研究院",
   szu: "深圳大学",
   sztu: "深圳技术大学",
   siqse: "深圳国际量子研究院",
