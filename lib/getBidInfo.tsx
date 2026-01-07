@@ -1,7 +1,7 @@
 export async function getBidInfo(page: number = 1, limit: number = 10) {
     const skip = (page - 1) * limit;
     const res = await fetch(
-      `http://localhost:8000/api/v1/bidding/?skip=${skip}&limit=${limit}`,
+      `/api/v1/bidding/?skip=${skip}&limit=${limit}`,
       {
         cache: 'no-store', // Disable caching for real-time data
         headers: {
@@ -17,7 +17,7 @@ export async function getBidInfo(page: number = 1, limit: number = 10) {
 
 
 export async function getBidInfoTotal() {
-    const response = await fetch('http://localhost:8000/api/v1/bidding/count')
+    const response = await fetch('/api/v1/bidding/count')
     
     if (!response.ok) {
       throw new Error('Failed to fetch total bid count')
@@ -28,7 +28,7 @@ export async function getBidInfoTotal() {
 }
 
 export async function getUniversityInfo() {
-    const response = await fetch('http://localhost:8000/api/v1/bidding/universities')
+    const response = await fetch('/api/v1/bidding/universities')
     
     if (!response.ok) {
       throw new Error('Failed to fetch university info')
@@ -39,7 +39,7 @@ export async function getUniversityInfo() {
 }
 
 export async function getOneUniversityInfo(university: string) {
-    const response = await fetch('http://localhost:8000/api/v1/bidding/universities/' + university)
+    const response = await fetch('/api/v1/bidding/universities/' + university)
 
     if (!response.ok) {
       throw new Error('Failed to fetch university info')
@@ -50,7 +50,7 @@ export async function getOneUniversityInfo(university: string) {
 }
 
 export async function getBiddingItemById(id: string) {
-    const response = await fetch(`http://localhost:8000/api/v1/bidding/item/${id}`, {
+    const response = await fetch(`/api/v1/bidding/item/${id}`, {
         cache: 'no-store',
     })
 
