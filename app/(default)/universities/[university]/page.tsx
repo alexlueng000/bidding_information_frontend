@@ -9,6 +9,7 @@ import PostItem from '../../post-item'
 import { getOneUniversityInfo } from '@/lib/getBidInfo'
 
 interface Post {
+    _id?: string,
     title: string,
     url: string,
     publish_date: string,
@@ -138,7 +139,7 @@ export default function Home({params}: {params: Promise<{university: string}>}) 
 
                               {posts.map(post => {
                               return (
-                                  <PostItem key={post.url + post.created_at} {...post} />
+                                  <PostItem key={post._id || (post.url + post.created_at)} {...post} />
                               )
                               })}
 

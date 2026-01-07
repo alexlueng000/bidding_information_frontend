@@ -5,7 +5,15 @@ export default function PostItem({ ...props }) {
   const webUrl = process.env.BIDDING_WEB_URL
 
   console.log(webUrl)
-  
+  // Format date to YYYY-MM-DD only
+  const formatDate = (dateStr: string) => {
+    return dateStr?.split(' ')[0] || dateStr
+  }
+
+  // Use internal detail page if _id is available, otherwise use external URL
+  const detailUrl = props._id ? `/bidding/${props._id}` : "http://zfcg.szggzy.com:8081" + `${props.url}`
+  const isExternal = !props._id
+
   return (
     <div className={`[&:nth-child(-n+12)]:-order-1 group ${!props.sticky && 'border-b border-gray-200'}`}>
       <div className={`px-4 py-6 ${props.sticky && 'bg-indigo-100 rounded-xl'}`}>
@@ -24,21 +32,31 @@ export default function PostItem({ ...props }) {
                 )}
               </div>
               <div className="mb-2">
-                <Link className="text-lg text-gray-800 font-bold" href={"http://zfcg.szggzy.com:8081" + `${props.url}`} target="_blank">
+                <Link
+                  className="text-lg text-gray-800 font-bold hover:text-blue-600 transition-colors"
+                  href={detailUrl}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                >
                   {props.title}
                 </Link>
               </div>
             </div>
             <div className="min-w-[120px] flex items-center lg:justify-end space-x-3 lg:space-x-0">
               <div className="lg:hidden group-hover:lg:block">
-                <Link className="btn-sm py-1.5 px-3 text-white bg-indigo-500 hover:bg-indigo-600 group shadow-sm" href={"http://zfcg.szggzy.com:8081" + `${props.url}`} target="_blank">
+                <Link
+                  className="btn-sm py-1.5 px-3 text-white bg-indigo-500 hover:bg-indigo-600 group shadow-sm"
+                  href={detailUrl}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                >
                   查看详情{' '}
                   <span className="tracking-normal text-indigo-200 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
                     -&gt;
                   </span>
                 </Link>
               </div>
-              <div className="group-hover:lg:hidden text-sm italic text-gray-500">{props.publish_date}</div>
+              <div className="group-hover:lg:hidden text-sm italic text-gray-500">{formatDate(props.publish_date)}</div>
             </div>
           </div>
         </div>

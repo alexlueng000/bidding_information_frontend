@@ -40,11 +40,24 @@ export async function getUniversityInfo() {
 
 export async function getOneUniversityInfo(university: string) {
     const response = await fetch('http://localhost:8000/api/v1/bidding/universities/' + university)
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch university info')
     }
-    
+
+    const data = await response.json()
+    return data
+}
+
+export async function getBiddingItemById(id: string) {
+    const response = await fetch(`http://localhost:8000/api/v1/bidding/item/${id}`, {
+        cache: 'no-store',
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch bidding item')
+    }
+
     const data = await response.json()
     return data
 }
