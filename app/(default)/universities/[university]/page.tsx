@@ -32,7 +32,7 @@ type UniversityChinese = {
   tsinghua: string;
   sziit: string;
   szbl: string;
-  smb: string;
+  smbu: string;
   szari: string;
   szyxkxy: string;
   pcsys: string;
@@ -55,7 +55,7 @@ const universityChinese: UniversityChinese = {
   tsinghua: "清华大学深圳国际研究生院",
   sziit: "深圳信息职业技术学院",
   szbl: "深圳湾实验室",
-  smb: "深圳北理莫斯科大学",
+  smbu: "深圳北理莫斯科大学",
   szari: "北京理工大学深圳汽车研究院",
   szyxkxy: "深圳医学科学院",
   pcsys: "鹏城实验室",
