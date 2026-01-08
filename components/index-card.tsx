@@ -106,8 +106,8 @@ export default function IndexCard({university, title, total, posts, index = 0}: 
                                 }}
                             >
                                 <Link
-                                    href={post._id ? `/bidding/${post._id}` : `http://zfcg.szggzy.com:8081${post.url}`}
-                                    {...(!post._id && { target: '_blank', rel: 'noopener noreferrer' })}
+                                    href={post._id && post._id !== 'null' ? `/bidding/${post._id}` : `http://zfcg.szggzy.com:8081${post.url}`}
+                                    {...(post._id && post._id !== 'null' ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
                                     className="flex items-start gap-3 py-3 px-3 -mx-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200 group-hover/item:px-4"
                                 >
                                     {/* Date indicator */}
@@ -128,7 +128,7 @@ export default function IndexCard({university, title, total, posts, index = 0}: 
                                     </div>
 
                                     {/* External link icon - show if has internal detail page */}
-                                    {post._id && (
+                                    {post._id && post._id !== 'null' && (
                                         <div className="flex-shrink-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-200">
                                             <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
