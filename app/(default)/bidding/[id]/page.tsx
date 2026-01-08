@@ -2,13 +2,13 @@ import { getBiddingItemById } from '@/lib/getBidInfo'
 import BiddingDetail from '@/components/bidding-detail'
 
 interface PageProps {
-    params: {
+    params: Promise<{
         id: string
-    }
+    }>
 }
 
 export default async function BiddingItemPage({ params }: PageProps) {
-    const { id } = params
+    const { id } = await params
 
     try {
         const item = await getBiddingItemById(id)
