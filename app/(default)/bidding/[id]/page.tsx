@@ -1,21 +1,30 @@
-import { getBiddingItemById } from '@/lib/getBidInfo'
+"use client"
+
+import { useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
 import BiddingDetail from '@/components/bidding-detail'
+import { getBiddingItemById } from '@/lib/getBidInfo'
 
-interface PageProps {
-    params: Promise<{
-        id: string
-    }>
-}
+export default function BiddingItemPage() {
+    const params = useParams()
+    const id = params.id as string
 
-export default async function BiddingItemPage({ params }: PageProps) {
-    const { id } = await params
+    const [item, setItem] = useState<any>(null)
+    const [isLoading, setIsLoading] = useState(true)
 
-    try {
-        const item = await getBiddingItemById(id)
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getBiddingItemById(id)
+                setItem(data)
+            } catch (error) {
+                console.error('Failed to fetch bidding item:', error)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+        fetchData()
+    }, [id])
 
-        return <BiddingDetail item={item} isLoading={false} />
-    } catch (error) {
-        console.error('Failed to fetch bidding item:', error)
-        return <BiddingDetail item={null} isLoading={false} />
-    }
+    return <BiddingDetail item={item} isLoading={isLoading} />
 }
